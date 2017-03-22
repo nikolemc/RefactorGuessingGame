@@ -1,0 +1,6 @@
+C:\Users\Nikole McStanley\tiy\week-2\day-3\RefactorGuessingGame\RefactorGuessingGame\RefactorGuessingGame\obj\Debug\RefactorGuessingGame.csprojResolveAssemblyReference.cache
+C:\Users\Nikole McStanley\tiy\week-2\day-3\RefactorGuessingGame\RefactorGuessingGame\RefactorGuessingGame\bin\Debug\RefactorGuessingGame.exe.config
+C:\Users\Nikole McStanley\tiy\week-2\day-3\RefactorGuessingGame\RefactorGuessingGame\RefactorGuessingGame\bin\Debug\RefactorGuessingGame.exe
+C:\Users\Nikole McStanley\tiy\week-2\day-3\RefactorGuessingGame\RefactorGuessingGame\RefactorGuessingGame\bin\Debug\RefactorGuessingGame.pdb
+C:\Users\Nikole McStanley\tiy\week-2\day-3\RefactorGuessingGame\RefactorGuessingGame\RefactorGuessingGame\obj\Debug\RefactorGuessingGame.exe
+C:\Users\Nikole McStanley\tiy\week-2\day-3\RefactorGuessingGame\RefactorGuessingGame\RefactorGuessingGame\obj\Debug\RefactorGuessingGame.pdb
