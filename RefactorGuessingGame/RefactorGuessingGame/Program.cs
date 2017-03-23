@@ -30,6 +30,30 @@ namespace RefactorGuessingGame
             return WasAlreadyGuess;
         }
 
+        static void DataProcessor(bool wasAlreadyGuess, int randomNumber, int filteredNumber, int[] pastGuess, int counter)
+        {
+            if (wasAlreadyGuess)
+
+            {
+                Console.WriteLine("You already guessed that, try again");
+            }
+            else
+            {
+                pastGuess[counter] = (filteredNumber);
+
+                if (filteredNumber < randomNumber)
+                {
+                    Console.WriteLine("Too high, try again.");
+                }
+                else if (filteredNumber > randomNumber)
+                {
+                    Console.WriteLine("Too low, try again");
+                }
+            }
+
+        }
+        
+
         static string EndingCredit(int tryvalue)
         {
             if (tryvalue > 4)
@@ -43,57 +67,49 @@ namespace RefactorGuessingGame
 
         }
 
+        static void PastGuesses(int[] pastGuess)
+            {
+            foreach (var userGuess in pastGuess)
+            {
+                if (userGuess != 0)
+                {
+                    Console.Write($"{userGuess},");
+                }
+            }
+
+            }
+                    
+
         static void Main(string[] args)
         {
-            var target = new Random().Next(1, 101);
-            Console.WriteLine($"the target is {target}");
+            var randomNumber = new Random().Next(1, 101);
+            Console.WriteLine($"the target is {randomNumber}");
 
             var counter = 0;
-            var guess = 0;
+            var filteredNumber = 0;
             var pastGuess = new int[5];
-
-            while (counter < 5 && guess != target)
+            
+            while (counter < 5 && filteredNumber != randomNumber)
             {
-                guess = PromptUser();
+                filteredNumber = PromptUser();
 
                 //**wasalreadyguess
                 bool wasAlreadyGuess = false;
-                wasAlreadyGuess = WasAlreadyGuess(pastGuess, guess);
+                wasAlreadyGuess = WasAlreadyGuess(pastGuess, filteredNumber);
 
-                if (wasAlreadyGuess)
-                {
-                    Console.WriteLine("You already guessed that, try again");
-                }
-                else
-                {
-                    pastGuess[counter] = guess;
+                //WasAlreadyGuess guessed
+                DataProcessor(wasAlreadyGuess, randomNumber, filteredNumber, pastGuess, counter);               
 
-                    Console.WriteLine($"your guess was {guess}");
 
-                    if (guess < target)
-                    {
-                        Console.WriteLine("Too low, try again.");
-                    }
-                    else if (guess > target)
-                    {
-                        Console.WriteLine("Too high, try again");
-                    }
+                PastGuesses(pastGuess);
 
-                    Console.WriteLine("Your past guesses are:");
-                }
-
-                foreach (var userGuess in pastGuess)
-                {
-                    if (userGuess != 0)
-                    {
-                        Console.Write($"{userGuess},");
-                    }
-                }
                 counter++;
                 
             }
 
            Console.WriteLine($"{EndingCredit(counter)}");
+           Console.ReadLine();
+        
 
         }
     }
