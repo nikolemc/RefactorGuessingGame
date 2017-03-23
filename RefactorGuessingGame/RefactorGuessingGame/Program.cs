@@ -41,18 +41,29 @@ namespace RefactorGuessingGame
             {
                 pastGuess[counter] = (filteredNumber);
 
-                if (filteredNumber < randomNumber)
+                if (filteredNumber > randomNumber)
                 {
                     Console.WriteLine("Too high, try again.");
                 }
-                else if (filteredNumber > randomNumber)
+                else if (filteredNumber < randomNumber)
                 {
                     Console.WriteLine("Too low, try again");
                 }
             }
 
         }
-        
+
+        static void PastGuesses(int[] pastGuess)
+        {
+            foreach (var userGuess in pastGuess)
+            {
+                if (userGuess != 0)
+                {
+                    Console.Write($"{userGuess},");
+                }
+            }
+
+        }
 
         static string EndingCredit(int tryvalue)
         {
@@ -67,20 +78,8 @@ namespace RefactorGuessingGame
 
         }
 
-        static void PastGuesses(int[] pastGuess)
-            {
-            foreach (var userGuess in pastGuess)
-            {
-                if (userGuess != 0)
-                {
-                    Console.Write($"{userGuess},");
-                }
-            }
-
-            }
-                    
-
-        static void Main(string[] args)
+       
+        static void RunMyGame()
         {
             var randomNumber = new Random().Next(1, 101);
             Console.WriteLine($"the target is {randomNumber}");
@@ -88,7 +87,7 @@ namespace RefactorGuessingGame
             var counter = 0;
             var filteredNumber = 0;
             var pastGuess = new int[5];
-            
+
             while (counter < 5 && filteredNumber != randomNumber)
             {
                 filteredNumber = PromptUser();
@@ -98,17 +97,23 @@ namespace RefactorGuessingGame
                 wasAlreadyGuess = WasAlreadyGuess(pastGuess, filteredNumber);
 
                 //WasAlreadyGuess guessed
-                DataProcessor(wasAlreadyGuess, randomNumber, filteredNumber, pastGuess, counter);               
+                DataProcessor(wasAlreadyGuess, randomNumber, filteredNumber, pastGuess, counter);
 
 
                 PastGuesses(pastGuess);
 
                 counter++;
-                
-            }
 
-           Console.WriteLine($"{EndingCredit(counter)}");
-           Console.ReadLine();
+            }
+            Console.WriteLine($"{EndingCredit(counter)}");
+            Console.ReadLine();
+        }
+        
+
+        static void Main(string[] args)
+        {
+
+            RunMyGame();
         
 
         }
